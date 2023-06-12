@@ -1,0 +1,10 @@
+{
+    "scenario": 0, 
+    "width": 60, 
+    "height": 60,
+    "rows": 50,
+    "cols": 50,
+    "pedestrians": [ [20,54] ,[6,20],[54,20],[20,6],[40,54]],
+    "obstacles": [ ],
+    "target": [ [30,30] ]
+}

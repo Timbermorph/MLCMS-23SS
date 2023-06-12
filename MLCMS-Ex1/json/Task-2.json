@@ -1,0 +1,12 @@
+{
+    "scenario": 10, 
+    "width": 50,
+     "height": 50,
+    "rows": 50,
+    "cols": 50,
+    "pedestrians": [ [5,25] ],
+    "obstacles": [ ],
+    "target": [ [25,25] ],
+    "method": "Euclidean",
+    "diff_speed": false
+}
