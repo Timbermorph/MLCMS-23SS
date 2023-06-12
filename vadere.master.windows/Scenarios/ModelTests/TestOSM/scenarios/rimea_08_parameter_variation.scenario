@@ -1,0 +1,3874 @@
+{
+  "name" : "rimea_08_parameter_variation",
+  "description" : "",
+  "release" : "2.4",
+  "commithash" : "37d5cea029114cfbc5ced38fb76c86834cb50304",
+  "processWriters" : {
+    "files" : [ ],
+    "processors" : [ {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.PedestrianOverlapProcessor",
+      "id" : 1
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MaxOverlapProcessor",
+      "id" : 2,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMaxOverlapProcessor",
+      "attributes" : {
+        "pedestrianOverlapProcessorId" : 1
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.NumberOverlapsProcessor",
+      "id" : 3,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesNumberOverlapsProcessor",
+      "attributes" : {
+        "pedestrianOverlapProcessorId" : 1
+      }
+    } ],
+    "isTimestamped" : true,
+    "isWriteMetaData" : false
+  },
+  "scenario" : {
+    "mainModel" : "org.vadere.simulator.models.osm.OptimalStepsModel",
+    "attributesModel" : {
+      "org.vadere.state.attributes.models.AttributesFloorField" : {
+        "createMethod" : "HIGH_ACCURACY_FAST_MARCHING",
+        "potentialFieldResolution" : 0.1,
+        "obstacleGridPenalty" : 0.1,
+        "targetAttractionStrength" : 1.0,
+        "cacheType" : "NO_CACHE",
+        "cacheDir" : "",
+        "timeCostAttributes" : {
+          "standardDeviation" : 0.7,
+          "type" : "UNIT",
+          "obstacleDensityWeight" : 3.5,
+          "pedestrianSameTargetDensityWeight" : 3.5,
+          "pedestrianOtherTargetDensityWeight" : 3.5,
+          "pedestrianWeight" : 3.5,
+          "queueWidthLoading" : 1.0,
+          "pedestrianDynamicWeight" : 6.0,
+          "loadingType" : "CONSTANT",
+          "width" : 0.2,
+          "height" : 1.0
+        }
+      },
+      "org.vadere.state.attributes.models.AttributesOSM" : {
+        "stepCircleResolution" : 18,
+        "numberOfCircles" : 1,
+        "optimizationType" : "DISCRETE",
+        "varyStepDirection" : false,
+        "movementType" : "ARBITRARY",
+        "stepLengthIntercept" : 0.4625,
+        "stepLengthSlopeSpeed" : 0.2345,
+        "stepLengthSD" : 0.036,
+        "movementThreshold" : 0.0,
+        "minStepLength" : 0.4625,
+        "minimumStepLength" : false,
+        "maxStepDuration" : 1.7976931348623157E308,
+        "dynamicStepLength" : false,
+        "updateType" : "EVENT_DRIVEN",
+        "seeSmallWalls" : false,
+        "targetPotentialModel" : "org.vadere.simulator.models.potential.fields.PotentialFieldTargetGrid",
+        "pedestrianPotentialModel" : "org.vadere.simulator.models.potential.PotentialFieldPedestrianCompactSoftshell",
+        "obstaclePotentialModel" : "org.vadere.simulator.models.potential.PotentialFieldObstacleCompactSoftshell",
+        "submodels" : [ ]
+      },
+      "org.vadere.state.attributes.models.AttributesPotentialCompactSoftshell" : {
+        "pedPotentialIntimateSpaceWidth" : 0.45,
+        "pedPotentialPersonalSpaceWidth" : 1.2,
+        "pedPotentialHeight" : 50.0,
+        "obstPotentialWidth" : 0.8,
+        "obstPotentialHeight" : 6.0,
+        "intimateSpaceFactor" : 1.2,
+        "personalSpacePower" : 1,
+        "intimateSpacePower" : 1
+      }
+    },
+    "attributesSimulation" : {
+      "finishTime" : 130.0,
+      "simTimeStepLength" : 0.4,
+      "realTimeSimTimeRatio" : 0.0,
+      "writeSimulationData" : true,
+      "visualizationEnabled" : true,
+      "printFPS" : false,
+      "digitsPerCoordinate" : 2,
+      "useFixedSeed" : true,
+      "fixedSeed" : 1,
+      "simulationSeed" : 1
+    },
+    "attributesPsychology" : {
+      "usePsychologyLayer" : false,
+      "psychologyLayer" : {
+        "perception" : "SimplePerceptionModel",
+        "cognition" : "CooperativeCognitionModel",
+        "attributesModel" : {
+          "org.vadere.state.attributes.models.psychology.perception.AttributesSimplePerceptionModel" : {
+            "priority" : {
+              "1" : "InformationStimulus",
+              "2" : "ChangeTargetScripted",
+              "3" : "ChangeTarget",
+              "4" : "Threat",
+              "5" : "Wait",
+              "6" : "WaitInArea",
+              "7" : "DistanceRecommendation"
+            }
+          },
+          "org.vadere.state.attributes.models.psychology.cognition.AttributesCooperativeCognitionModel" : { }
+        }
+      }
+    },
+    "topography" : {
+      "attributes" : {
+        "bounds" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "width" : 120.0,
+          "height" : 20.0
+        },
+        "boundingBoxWidth" : 0.5,
+        "bounded" : true,
+        "referenceCoordinateSystem" : null
+      },
+      "obstacles" : [ {
+        "id" : 2,
+        "shape" : {
+          "x" : 0.5,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 3,
+        "shape" : {
+          "x" : 0.5,
+          "y" : 5.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 4,
+        "shape" : {
+          "x" : 2.5,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 5,
+        "shape" : {
+          "x" : 3.0,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 6,
+        "shape" : {
+          "x" : 5.0,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 7,
+        "shape" : {
+          "x" : 5.5,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 8,
+        "shape" : {
+          "x" : 7.5,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 9,
+        "shape" : {
+          "x" : 8.0,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 10,
+        "shape" : {
+          "x" : 10.0,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 11,
+        "shape" : {
+          "x" : 10.5,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 12,
+        "shape" : {
+          "x" : 12.5,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 13,
+        "shape" : {
+          "x" : 13.0,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 14,
+        "shape" : {
+          "x" : 15.0,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 15,
+        "shape" : {
+          "x" : 15.5,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 16,
+        "shape" : {
+          "x" : 18.0,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 17,
+        "shape" : {
+          "x" : 20.0,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 18,
+        "shape" : {
+          "x" : 20.5,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 19,
+        "shape" : {
+          "x" : 22.5,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 20,
+        "shape" : {
+          "x" : 23.0,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 21,
+        "shape" : {
+          "x" : 25.0,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 22,
+        "shape" : {
+          "x" : 25.5,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 23,
+        "shape" : {
+          "x" : 27.5,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 17.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 24,
+        "shape" : {
+          "x" : 2.5,
+          "y" : 5.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 25,
+        "shape" : {
+          "x" : 0.5,
+          "y" : 8.5,
+          "width" : 20.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 26,
+        "shape" : {
+          "x" : 3.0,
+          "y" : 5.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 27,
+        "shape" : {
+          "x" : 5.5,
+          "y" : 5.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 28,
+        "shape" : {
+          "x" : 8.0,
+          "y" : 5.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 29,
+        "shape" : {
+          "x" : 10.5,
+          "y" : 5.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 30,
+        "shape" : {
+          "x" : 5.0,
+          "y" : 5.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 31,
+        "shape" : {
+          "x" : 7.5,
+          "y" : 5.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 32,
+        "shape" : {
+          "x" : 10.0,
+          "y" : 5.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 33,
+        "shape" : {
+          "x" : 12.5,
+          "y" : 5.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 34,
+        "shape" : {
+          "x" : 15.0,
+          "y" : 5.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 35,
+        "shape" : {
+          "x" : 17.5,
+          "y" : 5.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 36,
+        "shape" : {
+          "x" : 20.0,
+          "y" : 5.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 37,
+        "shape" : {
+          "x" : 13.0,
+          "y" : 5.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 38,
+        "shape" : {
+          "x" : 15.5,
+          "y" : 5.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 39,
+        "shape" : {
+          "x" : 18.0,
+          "y" : 5.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 40,
+        "shape" : {
+          "x" : 20.5,
+          "y" : 5.0,
+          "width" : 5.9,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 41,
+        "shape" : {
+          "x" : 2.5,
+          "y" : 9.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 42,
+        "shape" : {
+          "x" : 5.0,
+          "y" : 9.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 43,
+        "shape" : {
+          "x" : 7.5,
+          "y" : 9.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 44,
+        "shape" : {
+          "x" : 10.0,
+          "y" : 9.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 45,
+        "shape" : {
+          "x" : 12.5,
+          "y" : 9.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 46,
+        "shape" : {
+          "x" : 15.0,
+          "y" : 9.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 47,
+        "shape" : {
+          "x" : 17.5,
+          "y" : 9.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 48,
+        "shape" : {
+          "x" : 20.0,
+          "y" : 9.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 49,
+        "shape" : {
+          "x" : 20.5,
+          "y" : 12.0,
+          "width" : 6.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 50,
+        "shape" : {
+          "x" : 0.5,
+          "y" : 12.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 51,
+        "shape" : {
+          "x" : 3.0,
+          "y" : 12.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 52,
+        "shape" : {
+          "x" : 5.5,
+          "y" : 12.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 53,
+        "shape" : {
+          "x" : 8.0,
+          "y" : 12.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 54,
+        "shape" : {
+          "x" : 10.5,
+          "y" : 12.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 55,
+        "shape" : {
+          "x" : 13.0,
+          "y" : 12.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 56,
+        "shape" : {
+          "x" : 15.5,
+          "y" : 12.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 57,
+        "shape" : {
+          "x" : 18.0,
+          "y" : 12.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 58,
+        "shape" : {
+          "x" : 0.5,
+          "y" : 13.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 59,
+        "shape" : {
+          "x" : 3.0,
+          "y" : 13.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 60,
+        "shape" : {
+          "x" : 5.5,
+          "y" : 13.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 61,
+        "shape" : {
+          "x" : 8.0,
+          "y" : 13.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 62,
+        "shape" : {
+          "x" : 10.5,
+          "y" : 13.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 63,
+        "shape" : {
+          "x" : 13.0,
+          "y" : 13.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 64,
+        "shape" : {
+          "x" : 15.5,
+          "y" : 13.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 65,
+        "shape" : {
+          "x" : 18.0,
+          "y" : 13.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 66,
+        "shape" : {
+          "x" : 20.5,
+          "y" : 13.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 67,
+        "shape" : {
+          "x" : 2.5,
+          "y" : 13.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 68,
+        "shape" : {
+          "x" : 0.5,
+          "y" : 17.0,
+          "width" : 24.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 69,
+        "shape" : {
+          "x" : 5.0,
+          "y" : 13.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 70,
+        "shape" : {
+          "x" : 10.0,
+          "y" : 13.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 71,
+        "shape" : {
+          "x" : 15.0,
+          "y" : 13.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 72,
+        "shape" : {
+          "x" : 20.0,
+          "y" : 13.5,
+          "width" : 0.5,
+          "height" : 3.6,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 73,
+        "shape" : {
+          "x" : 7.5,
+          "y" : 13.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 74,
+        "shape" : {
+          "x" : 12.5,
+          "y" : 13.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 75,
+        "shape" : {
+          "x" : 17.5,
+          "y" : 13.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 76,
+        "shape" : {
+          "x" : 22.5,
+          "y" : 13.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 77,
+        "shape" : {
+          "x" : 26.0,
+          "y" : 17.0,
+          "width" : 1.5,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 78,
+        "shape" : {
+          "x" : 17.5,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 79,
+        "shape" : {
+          "x" : 80.0,
+          "y" : 8.5,
+          "width" : 20.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 80,
+        "shape" : {
+          "x" : 99.5,
+          "y" : 9.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 81,
+        "shape" : {
+          "x" : 99.5,
+          "y" : 5.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 82,
+        "shape" : {
+          "x" : 107.0,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 5.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 83,
+        "shape" : {
+          "x" : 107.0,
+          "y" : 8.0,
+          "width" : 0.5,
+          "height" : 11.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 84,
+        "shape" : {
+          "x" : 80.0,
+          "y" : 17.5,
+          "width" : 27.0,
+          "height" : 2.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 85,
+        "shape" : {
+          "x" : 81.9,
+          "y" : 17.5,
+          "width" : 0.004346598968524798,
+          "height" : 0.004346598968524798,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 86,
+        "shape" : {
+          "x" : 82.0,
+          "y" : 14.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 87,
+        "shape" : {
+          "x" : 84.5,
+          "y" : 14.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 88,
+        "shape" : {
+          "x" : 87.0,
+          "y" : 14.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 89,
+        "shape" : {
+          "x" : 89.5,
+          "y" : 14.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 90,
+        "shape" : {
+          "x" : 92.0,
+          "y" : 14.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 91,
+        "shape" : {
+          "x" : 94.5,
+          "y" : 14.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 92,
+        "shape" : {
+          "x" : 97.0,
+          "y" : 14.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 93,
+        "shape" : {
+          "x" : 99.5,
+          "y" : 14.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 94,
+        "shape" : {
+          "x" : 102.0,
+          "y" : 14.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 95,
+        "shape" : {
+          "x" : 104.5,
+          "y" : 14.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 96,
+        "shape" : {
+          "x" : 82.0,
+          "y" : 9.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 97,
+        "shape" : {
+          "x" : 84.5,
+          "y" : 9.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 98,
+        "shape" : {
+          "x" : 87.0,
+          "y" : 9.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 99,
+        "shape" : {
+          "x" : 89.5,
+          "y" : 9.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 100,
+        "shape" : {
+          "x" : 92.0,
+          "y" : 9.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 101,
+        "shape" : {
+          "x" : 94.5,
+          "y" : 9.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 102,
+        "shape" : {
+          "x" : 97.0,
+          "y" : 9.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 103,
+        "shape" : {
+          "x" : 80.0,
+          "y" : 14.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 104,
+        "shape" : {
+          "x" : 82.5,
+          "y" : 14.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 105,
+        "shape" : {
+          "x" : 85.0,
+          "y" : 14.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 106,
+        "shape" : {
+          "x" : 87.5,
+          "y" : 14.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 107,
+        "shape" : {
+          "x" : 90.0,
+          "y" : 14.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 108,
+        "shape" : {
+          "x" : 92.5,
+          "y" : 14.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 109,
+        "shape" : {
+          "x" : 95.0,
+          "y" : 14.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 110,
+        "shape" : {
+          "x" : 97.5,
+          "y" : 14.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 111,
+        "shape" : {
+          "x" : 80.0,
+          "y" : 12.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 112,
+        "shape" : {
+          "x" : 82.5,
+          "y" : 12.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 113,
+        "shape" : {
+          "x" : 85.0,
+          "y" : 12.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 114,
+        "shape" : {
+          "x" : 87.5,
+          "y" : 12.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 115,
+        "shape" : {
+          "x" : 90.0,
+          "y" : 12.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 116,
+        "shape" : {
+          "x" : 92.5,
+          "y" : 12.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 117,
+        "shape" : {
+          "x" : 95.0,
+          "y" : 12.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 118,
+        "shape" : {
+          "x" : 97.5,
+          "y" : 12.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 119,
+        "shape" : {
+          "x" : 100.0,
+          "y" : 14.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 120,
+        "shape" : {
+          "x" : 102.5,
+          "y" : 14.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 121,
+        "shape" : {
+          "x" : 105.0,
+          "y" : 14.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 122,
+        "shape" : {
+          "x" : 100.0,
+          "y" : 12.0,
+          "width" : 6.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 123,
+        "shape" : {
+          "x" : 100.0,
+          "y" : 5.0,
+          "width" : 6.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 124,
+        "shape" : {
+          "x" : 100.0,
+          "y" : 5.5,
+          "width" : 6.0,
+          "height" : 6.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 125,
+        "shape" : {
+          "x" : 107.5,
+          "y" : 8.0,
+          "width" : 7.5,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 126,
+        "shape" : {
+          "x" : 107.5,
+          "y" : 5.0,
+          "width" : 7.5,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 127,
+        "shape" : {
+          "x" : 22.4,
+          "y" : 5.5,
+          "width" : 4.0,
+          "height" : 4.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 128,
+        "shape" : {
+          "x" : 82.0,
+          "y" : 5.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 129,
+        "shape" : {
+          "x" : 82.0,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 130,
+        "shape" : {
+          "x" : 84.5,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 131,
+        "shape" : {
+          "x" : 84.5,
+          "y" : 5.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 132,
+        "shape" : {
+          "x" : 87.0,
+          "y" : 5.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 133,
+        "shape" : {
+          "x" : 89.5,
+          "y" : 5.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 134,
+        "shape" : {
+          "x" : 89.5,
+          "y" : 0.4,
+          "width" : 0.5,
+          "height" : 3.6,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 135,
+        "shape" : {
+          "x" : 87.0,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 136,
+        "shape" : {
+          "x" : 92.0,
+          "y" : 5.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 137,
+        "shape" : {
+          "x" : 94.5,
+          "y" : 5.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 138,
+        "shape" : {
+          "x" : 97.0,
+          "y" : 5.0,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 139,
+        "shape" : {
+          "x" : 92.0,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 140,
+        "shape" : {
+          "x" : 94.5,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 141,
+        "shape" : {
+          "x" : 97.0,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 142,
+        "shape" : {
+          "x" : 99.5,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 143,
+        "shape" : {
+          "x" : 102.0,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 3.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 144,
+        "shape" : {
+          "x" : 104.5,
+          "y" : 0.4,
+          "width" : 0.5,
+          "height" : 3.6,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 145,
+        "shape" : {
+          "x" : 105.0,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 146,
+        "shape" : {
+          "x" : 102.5,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 147,
+        "shape" : {
+          "x" : 100.0,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 148,
+        "shape" : {
+          "x" : 97.5,
+          "y" : 5.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 149,
+        "shape" : {
+          "x" : 97.5,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 150,
+        "shape" : {
+          "x" : 95.0,
+          "y" : 5.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 151,
+        "shape" : {
+          "x" : 95.0,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 152,
+        "shape" : {
+          "x" : 92.5,
+          "y" : 5.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 153,
+        "shape" : {
+          "x" : 92.5,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 154,
+        "shape" : {
+          "x" : 90.0,
+          "y" : 5.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 155,
+        "shape" : {
+          "x" : 90.0,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 156,
+        "shape" : {
+          "x" : 87.5,
+          "y" : 5.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 157,
+        "shape" : {
+          "x" : 87.5,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 158,
+        "shape" : {
+          "x" : 85.0,
+          "y" : 5.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 159,
+        "shape" : {
+          "x" : 85.0,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 160,
+        "shape" : {
+          "x" : 82.5,
+          "y" : 5.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 161,
+        "shape" : {
+          "x" : 82.5,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 162,
+        "shape" : {
+          "x" : 80.0,
+          "y" : 5.0,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 163,
+        "shape" : {
+          "x" : 80.0,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 164,
+        "shape" : {
+          "x" : 79.5,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 19.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 165,
+        "shape" : {
+          "x" : 29.0,
+          "y" : 0.5,
+          "width" : 0.5,
+          "height" : 19.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      } ],
+      "measurementAreas" : [ ],
+      "stairs" : [ {
+        "id" : 166,
+        "shape" : {
+          "x" : 108.0,
+          "y" : 5.5,
+          "width" : 4.0,
+          "height" : 2.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "treadCount" : 13,
+        "upwardDirection" : {
+          "x" : -1.0,
+          "y" : 0.0
+        }
+      }, {
+        "id" : 167,
+        "shape" : {
+          "x" : 22.4,
+          "y" : 9.5,
+          "width" : 4.0,
+          "height" : 2.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "treadCount" : 13,
+        "upwardDirection" : {
+          "x" : 1.0,
+          "y" : 0.0
+        }
+      } ],
+      "targets" : [ {
+        "id" : 1,
+        "shape" : {
+          "x" : 24.0,
+          "y" : 18.0,
+          "width" : 2.5,
+          "height" : 1.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "absorber" : {
+          "enabled" : true,
+          "deletionDistance" : 0.1
+        },
+        "waiter" : {
+          "enabled" : false,
+          "distribution" : null
+        },
+        "leavingSpeed" : -1.0,
+        "parallelEvents" : 0
+      }, {
+        "id" : 1,
+        "shape" : {
+          "x" : 114.0,
+          "y" : 5.5,
+          "width" : 1.0,
+          "height" : 2.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "absorber" : {
+          "enabled" : false,
+          "deletionDistance" : 0.1
+        },
+        "waiter" : {
+          "enabled" : false,
+          "distribution" : null
+        },
+        "leavingSpeed" : -1.0,
+        "parallelEvents" : 0
+      } ],
+      "targetChangers" : [ ],
+      "absorbingAreas" : [ ],
+      "aerosolClouds" : [ ],
+      "droplets" : [ ],
+      "sources" : [ {
+        "id" : 168,
+        "shape" : {
+          "x" : 0.5,
+          "y" : 14.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 169,
+        "shape" : {
+          "x" : 3.0,
+          "y" : 14.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 170,
+        "shape" : {
+          "x" : 5.5,
+          "y" : 14.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 171,
+        "shape" : {
+          "x" : 8.0,
+          "y" : 14.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 172,
+        "shape" : {
+          "x" : 10.5,
+          "y" : 14.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 173,
+        "shape" : {
+          "x" : 13.0,
+          "y" : 14.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 174,
+        "shape" : {
+          "x" : 15.5,
+          "y" : 14.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 175,
+        "shape" : {
+          "x" : 20.5,
+          "y" : 14.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 176,
+        "shape" : {
+          "x" : 18.0,
+          "y" : 14.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 177,
+        "shape" : {
+          "x" : 0.5,
+          "y" : 9.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 178,
+        "shape" : {
+          "x" : 3.0,
+          "y" : 9.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 179,
+        "shape" : {
+          "x" : 5.5,
+          "y" : 9.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 180,
+        "shape" : {
+          "x" : 8.0,
+          "y" : 9.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 181,
+        "shape" : {
+          "x" : 10.5,
+          "y" : 9.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 182,
+        "shape" : {
+          "x" : 13.0,
+          "y" : 9.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 183,
+        "shape" : {
+          "x" : 15.5,
+          "y" : 9.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 184,
+        "shape" : {
+          "x" : 0.5,
+          "y" : 5.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 185,
+        "shape" : {
+          "x" : 18.0,
+          "y" : 9.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 186,
+        "shape" : {
+          "x" : 3.0,
+          "y" : 5.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 187,
+        "shape" : {
+          "x" : 5.5,
+          "y" : 5.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 188,
+        "shape" : {
+          "x" : 8.0,
+          "y" : 5.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 189,
+        "shape" : {
+          "x" : 10.5,
+          "y" : 5.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 190,
+        "shape" : {
+          "x" : 13.0,
+          "y" : 5.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 191,
+        "shape" : {
+          "x" : 15.5,
+          "y" : 5.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 192,
+        "shape" : {
+          "x" : 18.0,
+          "y" : 5.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 193,
+        "shape" : {
+          "x" : 0.5,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 194,
+        "shape" : {
+          "x" : 3.0,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 195,
+        "shape" : {
+          "x" : 5.5,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 196,
+        "shape" : {
+          "x" : 8.0,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 197,
+        "shape" : {
+          "x" : 10.5,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 198,
+        "shape" : {
+          "x" : 13.0,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 199,
+        "shape" : {
+          "x" : 15.5,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 200,
+        "shape" : {
+          "x" : 18.0,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 201,
+        "shape" : {
+          "x" : 20.5,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 202,
+        "shape" : {
+          "x" : 23.0,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 203,
+        "shape" : {
+          "x" : 25.5,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 204,
+        "shape" : {
+          "x" : 80.0,
+          "y" : 14.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 205,
+        "shape" : {
+          "x" : 82.5,
+          "y" : 14.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 206,
+        "shape" : {
+          "x" : 85.0,
+          "y" : 14.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 207,
+        "shape" : {
+          "x" : 87.5,
+          "y" : 14.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 208,
+        "shape" : {
+          "x" : 90.0,
+          "y" : 14.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 209,
+        "shape" : {
+          "x" : 105.0,
+          "y" : 14.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 210,
+        "shape" : {
+          "x" : 92.5,
+          "y" : 14.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 211,
+        "shape" : {
+          "x" : 95.0,
+          "y" : 14.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 212,
+        "shape" : {
+          "x" : 97.5,
+          "y" : 14.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 213,
+        "shape" : {
+          "x" : 100.0,
+          "y" : 14.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 214,
+        "shape" : {
+          "x" : 102.5,
+          "y" : 14.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 215,
+        "shape" : {
+          "x" : 87.5,
+          "y" : 9.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 216,
+        "shape" : {
+          "x" : 87.5,
+          "y" : 5.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 217,
+        "shape" : {
+          "x" : 85.0,
+          "y" : 9.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 218,
+        "shape" : {
+          "x" : 82.5,
+          "y" : 9.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 219,
+        "shape" : {
+          "x" : 80.0,
+          "y" : 9.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 220,
+        "shape" : {
+          "x" : 80.0,
+          "y" : 5.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 221,
+        "shape" : {
+          "x" : 82.5,
+          "y" : 5.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 222,
+        "shape" : {
+          "x" : 85.0,
+          "y" : 5.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 223,
+        "shape" : {
+          "x" : 80.0,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 224,
+        "shape" : {
+          "x" : 82.5,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 225,
+        "shape" : {
+          "x" : 85.0,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 226,
+        "shape" : {
+          "x" : 87.5,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 227,
+        "shape" : {
+          "x" : 90.0,
+          "y" : 5.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 228,
+        "shape" : {
+          "x" : 90.0,
+          "y" : 9.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 229,
+        "shape" : {
+          "x" : 92.5,
+          "y" : 9.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 230,
+        "shape" : {
+          "x" : 95.0,
+          "y" : 9.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 231,
+        "shape" : {
+          "x" : 97.5,
+          "y" : 9.0,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 232,
+        "shape" : {
+          "x" : 92.5,
+          "y" : 5.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 233,
+        "shape" : {
+          "x" : 95.0,
+          "y" : 5.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 234,
+        "shape" : {
+          "x" : 97.5,
+          "y" : 5.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 235,
+        "shape" : {
+          "x" : 90.0,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 236,
+        "shape" : {
+          "x" : 92.5,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 237,
+        "shape" : {
+          "x" : 95.0,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 238,
+        "shape" : {
+          "x" : 97.5,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 239,
+        "shape" : {
+          "x" : 100.0,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 240,
+        "shape" : {
+          "x" : 102.5,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 241,
+        "shape" : {
+          "x" : 105.0,
+          "y" : 0.5,
+          "width" : 2.0,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 1 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 0.0,
+          "constraintsTimeEnd" : 0.0,
+          "eventPositionRandom" : false,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : true,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      } ],
+      "dynamicElements" : [ ],
+      "attributesPedestrian" : {
+        "shape" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "width" : 1.0,
+          "height" : 1.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "radius" : 0.195,
+        "densityDependentSpeed" : false,
+        "speedDistributionMean" : 1.34,
+        "speedDistributionStandardDeviation" : 0.26,
+        "minimumSpeed" : 0.5,
+        "maximumSpeed" : 2.2,
+        "acceleration" : 2.0,
+        "footstepHistorySize" : 4,
+        "searchRadius" : 1.0,
+        "walkingDirectionSameIfAngleLessOrEqual" : 45.0,
+        "walkingDirectionCalculation" : "BY_TARGET_CENTER"
+      },
+      "teleporter" : null,
+      "attributesCar" : null
+    },
+    "stimulusInfos" : [ ]
+  }
+}

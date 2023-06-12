@@ -1,0 +1,1590 @@
+{
+  "name" : "hm_stairs",
+  "description" : "",
+  "release" : "2.4",
+  "commithash" : "37d5cea029114cfbc5ced38fb76c86834cb50304",
+  "processWriters" : {
+    "files" : [ {
+      "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.EventtimePedestrianIdOutputFile",
+      "filename" : "postvis.traj",
+      "processors" : [ 1, 2 ]
+    } ],
+    "processors" : [ {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepProcessor",
+      "id" : 1
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepTargetIDProcessor",
+      "id" : 2
+    } ],
+    "isTimestamped" : true,
+    "isWriteMetaData" : false
+  },
+  "scenario" : {
+    "mainModel" : "org.vadere.simulator.models.osm.OptimalStepsModel",
+    "attributesModel" : {
+      "org.vadere.state.attributes.models.AttributesFloorField" : {
+        "createMethod" : "HIGH_ACCURACY_FAST_MARCHING",
+        "potentialFieldResolution" : 0.1,
+        "obstacleGridPenalty" : 0.1,
+        "targetAttractionStrength" : 1.0,
+        "cacheType" : "NO_CACHE",
+        "cacheDir" : "",
+        "timeCostAttributes" : {
+          "standardDeviation" : 0.7,
+          "type" : "UNIT",
+          "obstacleDensityWeight" : 9999993.5,
+          "pedestrianSameTargetDensityWeight" : 3.5,
+          "pedestrianOtherTargetDensityWeight" : 3.5,
+          "pedestrianWeight" : 3.5,
+          "queueWidthLoading" : 1.0,
+          "pedestrianDynamicWeight" : 6.0,
+          "loadingType" : "CONSTANT",
+          "width" : 0.2,
+          "height" : 1.0
+        }
+      },
+      "org.vadere.state.attributes.models.AttributesOSM" : {
+        "stepCircleResolution" : 18,
+        "numberOfCircles" : 1,
+        "optimizationType" : "DISCRETE",
+        "varyStepDirection" : false,
+        "movementType" : "ARBITRARY",
+        "stepLengthIntercept" : 0.4625,
+        "stepLengthSlopeSpeed" : 0.2345,
+        "stepLengthSD" : 0.036,
+        "movementThreshold" : 0.0,
+        "minStepLength" : 0.1,
+        "minimumStepLength" : true,
+        "maxStepDuration" : 1.7976931348623157E308,
+        "dynamicStepLength" : false,
+        "updateType" : "EVENT_DRIVEN",
+        "seeSmallWalls" : true,
+        "targetPotentialModel" : "org.vadere.simulator.models.potential.fields.PotentialFieldTargetGrid",
+        "pedestrianPotentialModel" : "org.vadere.simulator.models.potential.PotentialFieldPedestrianCompact",
+        "obstaclePotentialModel" : "org.vadere.simulator.models.potential.PotentialFieldObstacleCompact",
+        "submodels" : [ ]
+      },
+      "org.vadere.state.attributes.models.AttributesPotentialCompact" : {
+        "pedPotentialWidth" : 0.5,
+        "pedPotentialHeight" : 12.6,
+        "obstPotentialWidth" : 0.25,
+        "obstPotentialHeight" : 20.1,
+        "useHardBodyShell" : false,
+        "obstDistanceDeviation" : 0.0,
+        "visionFieldRadius" : 5.0
+      }
+    },
+    "attributesSimulation" : {
+      "finishTime" : 520.0,
+      "simTimeStepLength" : 0.4,
+      "realTimeSimTimeRatio" : 0.1,
+      "writeSimulationData" : true,
+      "visualizationEnabled" : true,
+      "printFPS" : false,
+      "digitsPerCoordinate" : 2,
+      "useFixedSeed" : false,
+      "fixedSeed" : 1,
+      "simulationSeed" : 0
+    },
+    "attributesPsychology" : {
+      "usePsychologyLayer" : false,
+      "psychologyLayer" : {
+        "perception" : "SimplePerceptionModel",
+        "cognition" : "CooperativeCognitionModel",
+        "attributesModel" : {
+          "org.vadere.state.attributes.models.psychology.perception.AttributesSimplePerceptionModel" : {
+            "priority" : {
+              "1" : "InformationStimulus",
+              "2" : "ChangeTargetScripted",
+              "3" : "ChangeTarget",
+              "4" : "Threat",
+              "5" : "Wait",
+              "6" : "WaitInArea",
+              "7" : "DistanceRecommendation"
+            }
+          },
+          "org.vadere.state.attributes.models.psychology.cognition.AttributesCooperativeCognitionModel" : { }
+        }
+      }
+    },
+    "topography" : {
+      "attributes" : {
+        "bounds" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "width" : 15.0,
+          "height" : 20.0
+        },
+        "boundingBoxWidth" : 0.5,
+        "bounded" : true,
+        "referenceCoordinateSystem" : null
+      },
+      "obstacles" : [ {
+        "id" : 51,
+        "shape" : {
+          "x" : 6.9,
+          "y" : 5.0,
+          "width" : 0.1,
+          "height" : 8.8,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 52,
+        "shape" : {
+          "x" : 4.9,
+          "y" : 5.0,
+          "width" : 0.1,
+          "height" : 8.8,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 53,
+        "shape" : {
+          "x" : 6.9,
+          "y" : 13.8,
+          "width" : 0.4,
+          "height" : 5.7,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 54,
+        "shape" : {
+          "x" : 4.5,
+          "y" : 13.0,
+          "width" : 0.5,
+          "height" : 0.8,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 55,
+        "shape" : {
+          "x" : 4.5,
+          "y" : 5.5,
+          "width" : 0.1,
+          "height" : 7.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 56,
+        "shape" : {
+          "x" : 0.1,
+          "y" : 5.2,
+          "width" : 4.5,
+          "height" : 0.3,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 57,
+        "shape" : {
+          "x" : 2.0,
+          "y" : 5.5,
+          "width" : 0.6,
+          "height" : 14.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      }, {
+        "id" : 58,
+        "shape" : {
+          "x" : 2.6,
+          "y" : 19.1,
+          "width" : 4.3,
+          "height" : 0.4,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true
+      } ],
+      "measurementAreas" : [ ],
+      "stairs" : [ {
+        "id" : 59,
+        "shape" : {
+          "x" : 5.0,
+          "y" : 5.0,
+          "width" : 1.9,
+          "height" : 1.77,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "treadCount" : 6,
+        "upwardDirection" : {
+          "x" : 0.0,
+          "y" : 1.0
+        }
+      }, {
+        "id" : 60,
+        "shape" : {
+          "x" : 5.0,
+          "y" : 8.29,
+          "width" : 1.9,
+          "height" : 4.72,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "treadCount" : 16,
+        "upwardDirection" : {
+          "x" : 0.0,
+          "y" : 1.0
+        }
+      } ],
+      "targets" : [ {
+        "id" : 20,
+        "shape" : {
+          "x" : 5.0,
+          "y" : 13.0,
+          "width" : 1.9,
+          "height" : 0.4,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "absorber" : {
+          "enabled" : false,
+          "deletionDistance" : 0.1
+        },
+        "waiter" : {
+          "enabled" : false,
+          "distribution" : null
+        },
+        "leavingSpeed" : -1.0,
+        "parallelEvents" : 0
+      }, {
+        "id" : 10,
+        "shape" : {
+          "x" : 5.0,
+          "y" : 4.5,
+          "width" : 1.9,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "absorber" : {
+          "enabled" : false,
+          "deletionDistance" : 0.1
+        },
+        "waiter" : {
+          "enabled" : false,
+          "distribution" : null
+        },
+        "leavingSpeed" : -1.0,
+        "parallelEvents" : 0
+      }, {
+        "id" : 21,
+        "shape" : {
+          "x" : 2.6,
+          "y" : 18.4,
+          "width" : 4.3,
+          "height" : 0.7,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "absorber" : {
+          "enabled" : true,
+          "deletionDistance" : 0.1
+        },
+        "waiter" : {
+          "enabled" : false,
+          "distribution" : null
+        },
+        "leavingSpeed" : -1.0,
+        "parallelEvents" : 0
+      }, {
+        "id" : 11,
+        "shape" : {
+          "x" : 5.5,
+          "y" : 0.5,
+          "width" : 5.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "absorber" : {
+          "enabled" : true,
+          "deletionDistance" : 0.1
+        },
+        "waiter" : {
+          "enabled" : false,
+          "distribution" : null
+        },
+        "leavingSpeed" : -1.0,
+        "parallelEvents" : 0
+      } ],
+      "targetChangers" : [ ],
+      "absorbingAreas" : [ ],
+      "aerosolClouds" : [ ],
+      "droplets" : [ ],
+      "sources" : [ {
+        "id" : 1,
+        "shape" : {
+          "x" : 3.1,
+          "y" : 3.5,
+          "width" : 1.0,
+          "height" : 1.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 5.0,
+          "constraintsTimeEnd" : 5.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 5,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 2,
+        "shape" : {
+          "x" : 4.2,
+          "y" : 3.5,
+          "width" : 0.6,
+          "height" : 1.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 15.0,
+          "constraintsTimeEnd" : 15.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 1,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 3,
+        "shape" : {
+          "x" : 2.7,
+          "y" : 2.1,
+          "width" : 0.4,
+          "height" : 1.3,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 45.0,
+          "constraintsTimeEnd" : 45.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 1,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 4,
+        "shape" : {
+          "x" : 3.2,
+          "y" : 2.1,
+          "width" : 0.5,
+          "height" : 1.3,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 80.0,
+          "constraintsTimeEnd" : 80.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 1,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 5,
+        "shape" : {
+          "x" : 3.8,
+          "y" : 2.0,
+          "width" : 0.5,
+          "height" : 1.4,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 110.0,
+          "constraintsTimeEnd" : 110.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 6,
+        "shape" : {
+          "x" : 4.4,
+          "y" : 2.0,
+          "width" : 0.7,
+          "height" : 1.4,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 120.0,
+          "constraintsTimeEnd" : 120.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 1,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 7,
+        "shape" : {
+          "x" : 2.6,
+          "y" : 0.5,
+          "width" : 0.6,
+          "height" : 1.4,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 130.0,
+          "constraintsTimeEnd" : 130.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 1,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 8,
+        "shape" : {
+          "x" : 3.3,
+          "y" : 0.6,
+          "width" : 0.5,
+          "height" : 1.2,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 140.0,
+          "constraintsTimeEnd" : 140.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 3,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 9,
+        "shape" : {
+          "x" : 3.9,
+          "y" : 0.7,
+          "width" : 0.5,
+          "height" : 1.1,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 145.0,
+          "constraintsTimeEnd" : 145.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 2,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 12,
+        "shape" : {
+          "x" : 4.6,
+          "y" : 0.7,
+          "width" : 0.5,
+          "height" : 1.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 190.0,
+          "constraintsTimeEnd" : 190.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 1,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 13,
+        "shape" : {
+          "x" : 7.4,
+          "y" : 3.8,
+          "width" : 0.6,
+          "height" : 1.2,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 215.0,
+          "constraintsTimeEnd" : 215.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 1,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 14,
+        "shape" : {
+          "x" : 8.1,
+          "y" : 3.7,
+          "width" : 0.7,
+          "height" : 1.3,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 225.0,
+          "constraintsTimeEnd" : 225.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 6,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 15,
+        "shape" : {
+          "x" : 8.9,
+          "y" : 3.7,
+          "width" : 0.6,
+          "height" : 1.3,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 242.0,
+          "constraintsTimeEnd" : 242.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 1,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 16,
+        "shape" : {
+          "x" : 9.6,
+          "y" : 3.7,
+          "width" : 0.7,
+          "height" : 1.3,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 292.0,
+          "constraintsTimeEnd" : 292.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 17,
+        "shape" : {
+          "x" : 10.5,
+          "y" : 3.7,
+          "width" : 0.7,
+          "height" : 1.3,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 337.0,
+          "constraintsTimeEnd" : 337.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 1,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 18,
+        "shape" : {
+          "x" : 11.3,
+          "y" : 3.7,
+          "width" : 0.8,
+          "height" : 1.2,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 373.0,
+          "constraintsTimeEnd" : 373.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 1,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 19,
+        "shape" : {
+          "x" : 7.4,
+          "y" : 2.6,
+          "width" : 0.6,
+          "height" : 1.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 220.0,
+          "constraintsTimeEnd" : 220.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 2,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 22,
+        "shape" : {
+          "x" : 8.1,
+          "y" : 2.5,
+          "width" : 0.6,
+          "height" : 1.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 230.0,
+          "constraintsTimeEnd" : 230.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 8,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 23,
+        "shape" : {
+          "x" : 8.9,
+          "y" : 2.5,
+          "width" : 0.7,
+          "height" : 1.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 265.0,
+          "constraintsTimeEnd" : 265.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 2,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 24,
+        "shape" : {
+          "x" : 9.7,
+          "y" : 2.4,
+          "width" : 0.7,
+          "height" : 1.1,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 305.0,
+          "constraintsTimeEnd" : 305.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 2,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 25,
+        "shape" : {
+          "x" : 10.5,
+          "y" : 2.4,
+          "width" : 0.6,
+          "height" : 1.1,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 355.0,
+          "constraintsTimeEnd" : 355.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 5,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 26,
+        "shape" : {
+          "x" : 11.3,
+          "y" : 2.3,
+          "width" : 0.8,
+          "height" : 1.2,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 383.0,
+          "constraintsTimeEnd" : 383.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 6,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 27,
+        "shape" : {
+          "x" : 9.0,
+          "y" : 1.4,
+          "width" : 0.6,
+          "height" : 1.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 282.0,
+          "constraintsTimeEnd" : 282.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 8,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 28,
+        "shape" : {
+          "x" : 9.8,
+          "y" : 1.5,
+          "width" : 0.6,
+          "height" : 0.8,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 327.0,
+          "constraintsTimeEnd" : 327.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 3,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 29,
+        "shape" : {
+          "x" : 10.5,
+          "y" : 1.4,
+          "width" : 0.6,
+          "height" : 0.9,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 363.0,
+          "constraintsTimeEnd" : 363.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 3,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 30,
+        "shape" : {
+          "x" : 11.3,
+          "y" : 1.4,
+          "width" : 0.7,
+          "height" : 0.8,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 411.0,
+          "constraintsTimeEnd" : 411.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 31,
+        "shape" : {
+          "x" : 12.2,
+          "y" : 3.7,
+          "width" : 0.5,
+          "height" : 1.2,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 435.0,
+          "constraintsTimeEnd" : 435.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 2,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 32,
+        "shape" : {
+          "x" : 12.2,
+          "y" : 2.4,
+          "width" : 0.5,
+          "height" : 1.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 446.0,
+          "constraintsTimeEnd" : 446.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 1,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 33,
+        "shape" : {
+          "x" : 12.2,
+          "y" : 1.4,
+          "width" : 0.6,
+          "height" : 0.7,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 475.0,
+          "constraintsTimeEnd" : 475.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 1,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 34,
+        "shape" : {
+          "x" : 4.9,
+          "y" : 15.9,
+          "width" : 0.7,
+          "height" : 1.2,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 20, 10, 11 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 60.0,
+          "constraintsTimeEnd" : 60.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 3,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 35,
+        "shape" : {
+          "x" : 4.9,
+          "y" : 14.6,
+          "width" : 0.7,
+          "height" : 1.2,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 20, 10, 11 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 1.0,
+          "constraintsTimeEnd" : 1.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 1,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 36,
+        "shape" : {
+          "x" : 4.1,
+          "y" : 15.9,
+          "width" : 0.7,
+          "height" : 1.2,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 20, 10, 11 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 70.0,
+          "constraintsTimeEnd" : 70.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 3,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 37,
+        "shape" : {
+          "x" : 4.1,
+          "y" : 14.6,
+          "width" : 0.7,
+          "height" : 1.2,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 20, 10, 11 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 30.0,
+          "constraintsTimeEnd" : 30.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 1,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 38,
+        "shape" : {
+          "x" : 3.5,
+          "y" : 14.7,
+          "width" : 0.5,
+          "height" : 1.1,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 20, 10, 11 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 40.0,
+          "constraintsTimeEnd" : 40.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 2,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 39,
+        "shape" : {
+          "x" : 3.5,
+          "y" : 16.0,
+          "width" : 0.5,
+          "height" : 1.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 20, 10, 11 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 75.0,
+          "constraintsTimeEnd" : 75.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 1,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 40,
+        "shape" : {
+          "x" : 2.9,
+          "y" : 14.8,
+          "width" : 0.5,
+          "height" : 1.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 20, 10, 11 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 50.0,
+          "constraintsTimeEnd" : 50.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 2,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 41,
+        "shape" : {
+          "x" : 3.0,
+          "y" : 16.1,
+          "width" : 0.4,
+          "height" : 0.9,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 20, 10, 11 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 85.0,
+          "constraintsTimeEnd" : 85.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 42,
+        "shape" : {
+          "x" : 4.9,
+          "y" : 17.3,
+          "width" : 0.6,
+          "height" : 0.9,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 20, 10, 11 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 90.0,
+          "constraintsTimeEnd" : 90.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 3,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 43,
+        "shape" : {
+          "x" : 4.2,
+          "y" : 17.4,
+          "width" : 0.5,
+          "height" : 0.8,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 20, 10, 11 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 120.0,
+          "constraintsTimeEnd" : 120.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 1,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 44,
+        "shape" : {
+          "x" : 3.5,
+          "y" : 17.3,
+          "width" : 0.5,
+          "height" : 0.9,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 20, 10, 11 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 133.0,
+          "constraintsTimeEnd" : 133.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 45,
+        "shape" : {
+          "x" : 2.9,
+          "y" : 17.4,
+          "width" : 0.4,
+          "height" : 0.9,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 20, 10, 11 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 197.0,
+          "constraintsTimeEnd" : 197.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 4,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 46,
+        "shape" : {
+          "x" : 3.8,
+          "y" : 13.6,
+          "width" : 0.5,
+          "height" : 0.9,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 20, 10, 11 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 255.0,
+          "constraintsTimeEnd" : 255.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 1,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 47,
+        "shape" : {
+          "x" : 3.0,
+          "y" : 13.7,
+          "width" : 0.6,
+          "height" : 0.8,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 20, 10, 11 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 345.0,
+          "constraintsTimeEnd" : 345.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 1,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 48,
+        "shape" : {
+          "x" : 3.8,
+          "y" : 12.7,
+          "width" : 0.5,
+          "height" : 0.8,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 20, 10, 11 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 415.0,
+          "constraintsTimeEnd" : 415.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 1,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 49,
+        "shape" : {
+          "x" : 3.1,
+          "y" : 12.7,
+          "width" : 0.5,
+          "height" : 0.8,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 20, 10, 11 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 473.0,
+          "constraintsTimeEnd" : 473.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 2,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      }, {
+        "id" : 50,
+        "shape" : {
+          "x" : 8.7,
+          "y" : 5.1,
+          "width" : 1.0,
+          "height" : 0.5,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "targetIds" : [ 10, 20, 21 ],
+        "spawner" : {
+          "type" : "org.vadere.state.attributes.spawner.AttributesRegularSpawner",
+          "constraintsElementsMax" : -1,
+          "constraintsTimeStart" : 253.0,
+          "constraintsTimeEnd" : 253.0,
+          "eventPositionRandom" : true,
+          "eventPositionGridCA" : false,
+          "eventPositionFreeSpace" : false,
+          "eventElementCount" : 5,
+          "eventElement" : null,
+          "distribution" : {
+            "type" : "org.vadere.state.attributes.distributions.AttributesConstantDistribution",
+            "updateFrequency" : 1.0
+          }
+        },
+        "groupSizeDistribution" : [ 1.0 ]
+      } ],
+      "dynamicElements" : [ ],
+      "attributesPedestrian" : {
+        "shape" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "width" : 1.0,
+          "height" : 1.0,
+          "type" : "RECTANGLE"
+        },
+        "visible" : true,
+        "radius" : 0.195,
+        "densityDependentSpeed" : false,
+        "speedDistributionMean" : 1.34,
+        "speedDistributionStandardDeviation" : 0.0,
+        "minimumSpeed" : 0.3,
+        "maximumSpeed" : 3.0,
+        "acceleration" : 2.0,
+        "footstepHistorySize" : 4,
+        "searchRadius" : 1.0,
+        "walkingDirectionSameIfAngleLessOrEqual" : 45.0,
+        "walkingDirectionCalculation" : "BY_TARGET_CENTER"
+      },
+      "teleporter" : null,
+      "attributesCar" : null
+    },
+    "stimulusInfos" : [ ]
+  }
+}

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="vadere.master.windows">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/vadere-gui.jar!/" />
+      <root url="jar://$PROJECT_DIR$/vadere-server.jar!/" />
+      <root url="jar://$PROJECT_DIR$/vadere-console.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
